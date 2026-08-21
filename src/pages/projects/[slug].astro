@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import { site } from '../../lib/site';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={`${project.data.title} | ${site.name}`} description={project.data.hook}>
+	<article>
+		<section class="border-b border-line bg-surface">
+			<div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+				<div class="reveal space-y-6">
+					<StatusBadge status={project.data.status} />
+					<h1 class="text-5xl">{project.data.title}</h1>
+					<p class="text-xl text-muted">{project.data.hook}</p>
+					<div class="flex flex-wrap gap-4">
+						{
+							project.data.projectUrl && (
+								<a
+									href={project.data.projectUrl}
+									class="btn-primary"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Visit project
+								</a>
+							)
+						}
+						{
+							project.data.privacyUrl && (
+								<a href={`${base}${project.data.privacyUrl.replace(/^\//, '')}`} class="btn-secondary">
+									Privacy policy
+								</a>
+							)
+						}
+					</div>
+				</div>
+
+				<div class="reveal flex aspect-square max-h-80 items-center justify-center rounded-3xl border border-line bg-gradient-to-br from-sky to-paper text-8xl shadow-sm lg:max-h-none">
+					<span aria-hidden="true">{project.data.icon}</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="page-shell">
+			<div class="reveal prose-editorial max-w-3xl">
+				<Content />
+			</div>
+		</section>
+	</article>
+</BaseLayout>

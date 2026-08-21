@@ -1,0 +1,17 @@
+/*
+ * B&E Labs — playful hobby studio palette
+ */
+@theme {
+	--font-display: "Nunito", ui-sans-serif, system-ui, sans-serif;
+	--font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+	--color-paper: #faf6ef;
+	--color-ink: #2a3d2a;
+	--color-accent: #73b861;
+	--color-accent-dark: #5a9a4a;
+	--color-amber: #d4a84b;
+	--color-muted: #5c6b5c;
+	--color-surface: #ffffff;
+	--color-line: #dce8d8;
+	--color-sky: #e8f4e4;
+	--color-mint: #b8d4a8;
+}

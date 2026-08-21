@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projectsByStatus } from '../../lib/projectStatus';
+import { site } from '../../lib/site';
+
+const projects = await getCollection('projects');
+const sections = projectsByStatus(projects);
+---
+
+<BaseLayout
+	title={`Projects | ${site.name}`}
+	description="All B&E Labs hobby projects — live apps, works in progress, and friends & family tools."
+>
+	<section class="page-header-bg">
+		<div class="page-shell pb-16 pt-20">
+			<div class="reveal page-intro">
+				<p class="eyebrow">Projects</p>
+				<h1 class="text-5xl">Everything in the lab</h1>
+				<p class="text-xl text-muted">
+					Apps and sites grouped by how public they are — from live products to experiments shared with friends and family.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="page-shell space-y-20">
+		{
+			sections.map(
+				(section) =>
+					section.projects.length > 0 && (
+						<div class="reveal">
+							<div class="mb-8 max-w-3xl">
+								<h2 class="text-3xl">{section.title}</h2>
+								<p class="mt-3 text-muted">{section.description}</p>
+							</div>
+							<div class="grid gap-8 md:grid-cols-2">
+								{section.projects.map((project) => (
+									<ProjectCard project={project} />
+								))}
+							</div>
+						</div>
+					),
+			)
+		}
+	</section>
+</BaseLayout>

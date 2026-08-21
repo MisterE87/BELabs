@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout
+	title={`Contact | ${site.name}`}
+	description="Contact B&E Labs for questions about hobby projects."
+>
+	<section class="page-header-bg">
+		<div class="page-shell pb-16 pt-20">
+			<div class="reveal page-intro">
+				<p class="eyebrow">Contact</p>
+				<h1 class="text-5xl">Say hello</h1>
+				<p class="text-xl text-muted">
+					Questions about a project, privacy policy, or something you spotted? Send a note — this is a hobby setup, so replies happen in spare time.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="page-shell">
+		<div class="grid gap-12 lg:grid-cols-2">
+			<div class="reveal space-y-6">
+				<div class="card-muted">
+					<h2 class="text-2xl">Email</h2>
+					<p class="mt-4 text-muted">
+						For now, the simplest way to reach Erwin is by email. A proper <code>@belabs.nl</code> address will replace this once the domain is set up.
+					</p>
+					<a
+						href={`mailto:${site.contactEmail}`}
+						class="mt-6 inline-flex text-lg font-semibold text-accent-dark hover:text-accent"
+					>
+						{site.contactEmail}
+					</a>
+				</div>
+
+				<p class="text-sm text-muted">
+					Personal hobby projects · views my own · not a registered business.
+				</p>
+			</div>
+
+			<div class="reveal card">
+				<h2 class="text-2xl">Privacy & apps</h2>
+				<p class="mt-4 text-muted">
+					Parents with questions about Farm Academy can also use the contact details on the privacy policy page.
+				</p>
+				<a href={`${import.meta.env.BASE_URL}privacy/farm-academy/`} class="mt-6 inline-flex font-semibold text-accent-dark hover:text-accent">
+					Farm Academy privacy (NL) →
+				</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

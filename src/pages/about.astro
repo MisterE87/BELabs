@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout
+	title={`About | ${site.name}`}
+	description="About Erwin van Wingerden, B&E Labs, and why Benjamin and Erwin share a hobby studio name."
+>
+	<section class="page-header-bg">
+		<div class="page-shell pb-16 pt-20">
+			<div class="reveal page-intro">
+				<p class="eyebrow">About</p>
+				<h1 class="text-5xl">A hobby studio, not a company pitch</h1>
+				<p class="text-xl text-muted">
+					B&E Labs is where Erwin van Wingerden collects side projects — apps and sites built for fun, for friends, and occasionally for a wider audience.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="page-shell">
+		<div class="grid gap-8 lg:grid-cols-2">
+			<div class="reveal card">
+				<h2 class="text-3xl">Who is Erwin?</h2>
+				<div class="prose-editorial mt-6">
+					<p>
+						By day Erwin works in software development as a <strong>product owner</strong> — translating ideas into workable products, collaborating with engineers, and keeping user needs in focus.
+					</p>
+					<p>
+						Outside work he enjoys tinkering with code and small products: board game stats, packing lists, aquarium maintenance, and games for his son. Not to launch a startup — just to learn, build, and share with people who might find them useful.
+					</p>
+				</div>
+			</div>
+
+			<div class="reveal card-muted">
+				<h2 class="text-3xl">Why B&E Labs?</h2>
+				<div class="prose-editorial mt-6">
+					<p>
+						The name combines <strong>B</strong>enjamin and <strong>E</strong>rwin. Farm Academy was created with Benjamin in mind — a playful learning app he might grow into as a future co-conspirator in the lab.
+					</p>
+					<p>
+						“Labs” because these are experiments: some go live, some stay among friends, all of them teach something along the way.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="reveal card mt-8">
+			<h2 class="text-3xl">What you'll find here</h2>
+			<div class="prose-editorial mt-6">
+				<p>
+					This site is a simple overview for friends, curious visitors, and store listings that need a real home page. It is <strong>not</strong> a professional CV or consultancy site — just an honest shelf for hobby work.
+				</p>
+				<p>
+					Some projects are public (Board Stats, Blue Chicken Board Games). Others are private tools for family and friends. Status badges on each project card make that distinction clear.
+				</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

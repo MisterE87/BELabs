@@ -1,0 +1,52 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../lib/site';
+
+const entry = await getEntry('legal', 'farm-academy-privacy');
+if (!entry) {
+	throw new Error('Farm Academy privacy policy not found');
+}
+
+const { Content } = await render(entry);
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+	title={`${entry.data.appName} — Privacybeleid | ${site.name}`}
+	description={`Privacybeleid voor ${entry.data.appName}, een educatief spel van B&E Labs.`}
+	lang="nl"
+>
+	<section class="page-header-bg">
+		<div class="page-shell pb-12 pt-20">
+			<div class="reveal page-intro">
+				<p class="eyebrow">{entry.data.appName} · B&E Labs</p>
+				<h1 class="text-5xl">Privacybeleid</h1>
+				<p class="text-lg text-muted">
+					<strong class="text-ink">Laatst bijgewerkt:</strong> {entry.data.lastUpdated}
+					{
+						entry.data.packageName && (
+							<>
+								<br />
+								Pakketnaam: <code>{entry.data.packageName}</code>
+							</>
+						)
+					}
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="page-shell">
+		<div class="reveal card mx-auto max-w-3xl">
+			<div class="prose-legal">
+				<Content />
+			</div>
+		</div>
+
+		<div class="reveal mx-auto mt-10 flex max-w-3xl flex-wrap gap-4 text-sm">
+			<a href={`${base}`} class="font-semibold text-accent-dark hover:text-accent">← B&E Labs home</a>
+			<a href={`${base}projects/farm-academy/`} class="font-semibold text-accent-dark hover:text-accent">Farm Academy project →</a>
+		</div>
+	</section>
+</BaseLayout>

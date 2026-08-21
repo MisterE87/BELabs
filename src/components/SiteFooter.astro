@@ -1,0 +1,20 @@
+---
+import { site } from '../lib/site';
+
+const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="border-t border-line bg-surface">
+	<div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 md:flex-row md:items-start md:justify-between">
+		<div>
+			<p class="font-display text-lg font-extrabold">{site.name}</p>
+			<p class="mt-1 text-sm text-muted">Personal hobby projects · views my own · not a registered business</p>
+		</div>
+		<div class="flex flex-col gap-2 text-sm text-muted md:items-end">
+			<a href={`${base}privacy/farm-academy/`} class="font-semibold text-accent-dark hover:text-accent">Farm Academy privacy (NL)</a>
+			<a href={`${base}contact/`} class="font-semibold text-accent-dark hover:text-accent">Contact</a>
+			<p>&copy; {year} Erwin van Wingerden</p>
+		</div>
+	</div>
+</footer>
