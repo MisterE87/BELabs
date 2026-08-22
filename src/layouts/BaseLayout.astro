@@ -3,7 +3,6 @@ import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import { site } from '../lib/site';
 
 interface Props {
@@ -40,21 +39,6 @@ const resolvedBackHref = backHref ?? `${base}`;
 		<link rel="canonical" href={canonical} />
 		<title>{title}</title>
 		<ClientRouter />
-		<script is:inline>
-			(function () {
-				try {
-					var theme = localStorage.getItem('belabs-theme');
-					if (
-						theme === 'belabs-brand' ||
-						theme === 'electric-kiwi' ||
-						theme === 'mountain-mist' ||
-						theme === 'alchemical-reaction'
-					) {
-						document.documentElement.dataset.theme = theme;
-					}
-				} catch (e) {}
-			})();
-		</script>
 	</head>
 	<body class="min-h-screen">
 		<SiteHeader variant={headerVariant} backHref={resolvedBackHref} backLabel={backLabel} />
@@ -62,23 +46,19 @@ const resolvedBackHref = backHref ?? `${base}`;
 			<slot />
 		</main>
 		<SiteFooter />
-		{import.meta.env.DEV && <ThemeSwitcher />}
 
 		<script>
 			import { initReveal } from '../scripts/reveal';
 			import { initScrollSpy } from '../scripts/scroll-spy';
 			import { initScrollHeader } from '../scripts/scroll-header';
-			import { initThemeSwitcher } from '../scripts/theme-switcher';
 
 			initReveal();
 			initScrollSpy();
 			initScrollHeader();
-			initThemeSwitcher();
 			document.addEventListener('astro:page-load', () => {
 				initReveal();
 				initScrollSpy();
 				initScrollHeader();
-				initThemeSwitcher();
 			});
 		</script>
 	</body>

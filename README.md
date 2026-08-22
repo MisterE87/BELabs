@@ -2,7 +2,7 @@
 
 A lightweight static site for **B&E Labs** — Erwin van Wingerden's hobby project studio (apps and sites built for fun, friends, and occasional wider release).
 
-Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com). Uses the **Alchemical Reaction** palette from [Figma's color combinations](https://www.figma.com/resource-library/color-combinations/).
+Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com). Uses the **B&E Labs brand** palette (blue-to-green gradient from the site icon).
 
 **Live URL:** [https://belabs.nl](https://belabs.nl)
 
@@ -23,26 +23,6 @@ npm run preview
 ```
 
 Preview serves the production build at **http://localhost:4323/**.
-
-## Theme comparison (dev only)
-
-Production uses **Alchemical Reaction** by default. During local development, a floating palette switcher appears bottom-right to compare three Figma-inspired themes:
-
-| Theme | Figma # | File | Character |
-|-------|---------|------|-----------|
-| Alchemical Reaction | 41 | `src/styles/themes/alchemical-reaction.css` | Purple + orange + green — bold, scientific, futuristic |
-| Electric Kiwi | 39 | `src/styles/themes/electric-kiwi.css` | Lime green + tangy yellow — energetic hobby lab |
-| Mountain Mist | 83 | `src/styles/themes/mountain-mist.css` | Slate gray + misty blue + pine green — calm mountain fog |
-
-The switcher is excluded from production builds. Your choice is saved in `localStorage` (`belabs-theme`) and applied before first paint.
-
-### Changing the default theme
-
-To switch the production default later:
-
-1. Move the `:root` selector in [`src/styles/themes/alchemical-reaction.css`](src/styles/themes/alchemical-reaction.css) to your chosen theme file (only one theme file should define `:root`).
-2. Set `DEFAULT_THEME` in [`src/scripts/theme-switcher.ts`](src/scripts/theme-switcher.ts).
-3. Update `data-theme` on the `<html>` element in [`src/layouts/BaseLayout.astro`](src/layouts/BaseLayout.astro).
 
 ## Site structure
 
@@ -233,9 +213,7 @@ These are shared with other IFastNet-hosted projects in the same GitHub account.
 
 ## Contact email
 
-General contact uses `site.contactEmail` in `src/lib/site.ts` (temporary personal address).
-
-Farm Academy privacy uses its own contact email in legal frontmatter until `hello@belabs.nl` is configured.
+General contact and Farm Academy privacy both use `erwin@belabs.nl` (`site.contactEmail` in `src/lib/site.ts` and legal frontmatter).
 
 ## License
 

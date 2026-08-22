@@ -1,10 +1,7 @@
 /*
- * B&E Labs — theme tokens (Electric Kiwi default)
+ * B&E Labs — theme tokens (brand palette)
  */
 @import './themes/belabs-brand.css';
-@import './themes/electric-kiwi.css';
-@import './themes/mountain-mist.css';
-@import './themes/alchemical-reaction.css';
 
 @theme inline {
 	--font-display: "Nunito", ui-sans-serif, system-ui, sans-serif;

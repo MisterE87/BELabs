@@ -2,9 +2,9 @@
 title: "Privacybeleid"
 appName: "Farm Academy"
 language: "nl"
-lastUpdated: "7 juli 2026"
+lastUpdated: "22 augustus 2026"
 packageName: "nl.farmacademy.game"
-contactEmail: "trek.falcon9317@eagereverest.com"
+contactEmail: "erwin@belabs.nl"
 ---
 
 Farm Academy is een educatief spel. Dit privacybeleid legt uit hoe de app omgaat met gegevens.
@@ -27,9 +27,7 @@ Farm Academy is bedoeld voor kinderen van ongeveer 6 tot 12 jaar. Omdat wij geen
 
 ## Contact
 
-Vragen van ouders of verzorgers? Neem contact op via [Erwin](mailto:trek.falcon9317@eagereverest.com).
-
-<!-- TODO: replace contact email with hello@belabs.nl when domain mail is ready -->
+Vragen van ouders of verzorgers? Neem contact op via [Erwin](mailto:erwin@belabs.nl).
 
 ## Wijzigingen
 
