@@ -12,7 +12,6 @@ const SCREENSHOT_HEIGHT = 800;
 const ICON_SIZE = 256;
 const GALLERY_PORTRAIT_WIDTH = 720;
 const GALLERY_LANDSCAPE_WIDTH = 1280;
-const GALLERY_LANDSCAPE_HEIGHT = 800;
 
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.heic'];
 
@@ -79,7 +78,7 @@ function discoverIconSource(dir) {
 	if (exact) return exact;
 
 	const namedIcons = images
-		.filter((image) => /^icon\./i.test(image.name))
+		.filter((image) => /^icon[-_.]/i.test(image.name))
 		.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 	if (namedIcons.length > 0) return namedIcons[0].path;
 
@@ -91,7 +90,7 @@ async function getImageSize(path) {
 	return { width: metadata.width ?? 0, height: metadata.height ?? 0 };
 }
 
-function isScreenshotSized(width, height) {
+function isLegacyScreenshotCrop(width, height) {
 	return width === SCREENSHOT_WIDTH && height === SCREENSHOT_HEIGHT;
 }
 
@@ -101,7 +100,7 @@ function isIconSized(width, height) {
 
 async function optimizeScreenshot(sourcePath, outputPath) {
 	const buffer = await sharp(sourcePath)
-		.resize(SCREENSHOT_WIDTH, SCREENSHOT_HEIGHT, { fit: 'cover', position: 'top' })
+		.resize(SCREENSHOT_WIDTH, null, { fit: 'inside', withoutEnlargement: false })
 		.webp({ quality: 85 })
 		.toBuffer();
 	writeFileSync(outputPath, buffer);
@@ -125,7 +124,7 @@ async function optimizeGalleryPortrait(sourcePath, outputPath) {
 
 async function optimizeGalleryLandscape(sourcePath, outputPath) {
 	const buffer = await sharp(sourcePath)
-		.resize(GALLERY_LANDSCAPE_WIDTH, GALLERY_LANDSCAPE_HEIGHT, { fit: 'cover', position: 'top' })
+		.resize(GALLERY_LANDSCAPE_WIDTH, null, { fit: 'inside', withoutEnlargement: false })
 		.webp({ quality: 85 })
 		.toBuffer();
 	writeFileSync(outputPath, buffer);
@@ -176,9 +175,7 @@ async function optimizeGalleryDir(galleryDir) {
 			console.log(`  gallery: ${basename(sourcePath)} → gallery/${outputName} (portrait, max ${GALLERY_PORTRAIT_WIDTH}px wide)`);
 		} else {
 			await optimizeGalleryLandscape(sourcePath, outputPath);
-			console.log(
-				`  gallery: ${basename(sourcePath)} → gallery/${outputName} (landscape, ${GALLERY_LANDSCAPE_WIDTH}×${GALLERY_LANDSCAPE_HEIGHT})`,
-			);
+			console.log(`  gallery: ${basename(sourcePath)} → gallery/${outputName} (landscape, max ${GALLERY_LANDSCAPE_WIDTH}px wide)`);
 		}
 
 		optimized.push(outputName);
@@ -197,19 +194,15 @@ async function resolveScreenshotSource(dir) {
 	const outputPath = join(dir, OUTPUT_SCREENSHOT);
 
 	if (rawSource) {
-		if (rawSource === outputPath) {
-			const { width, height } = await getImageSize(outputPath);
-			if (!isScreenshotSized(width, height)) return outputPath;
-			return null;
-		}
+		if (rawSource === outputPath) return null;
+
 		if (!existsSync(outputPath) || isNewer(rawSource, outputPath)) return rawSource;
+
+		const { width, height } = await getImageSize(outputPath);
+		if (isLegacyScreenshotCrop(width, height)) return rawSource;
+
 		return null;
 	}
-
-	if (!existsSync(outputPath)) return null;
-
-	const { width, height } = await getImageSize(outputPath);
-	if (!isScreenshotSized(width, height)) return outputPath;
 
 	return null;
 }
@@ -262,7 +255,7 @@ async function main() {
 		if (screenshotSource) {
 			const outputPath = join(dir, OUTPUT_SCREENSHOT);
 			await optimizeScreenshot(screenshotSource, outputPath);
-			console.log(`  screenshot: ${screenshotSource} → ${OUTPUT_SCREENSHOT} (${SCREENSHOT_WIDTH}×${SCREENSHOT_HEIGHT})`);
+			console.log(`  screenshot: ${screenshotSource} → ${OUTPUT_SCREENSHOT} (max ${SCREENSHOT_WIDTH}px wide)`);
 			optimized += 1;
 		}
 

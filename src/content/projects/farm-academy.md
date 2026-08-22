@@ -4,6 +4,7 @@ status: "In development"
 hook: "An educational farm game for kids — built with Benjamin in mind."
 featured: true
 icon: "🌾"
+projectUrl: "https://play.google.com/store/apps/details?id=nl.farmacademy.game"
 privacyUrl: "/privacy/farm-academy/"
 showcase: true
 heroOrientation: portrait
@@ -16,45 +17,33 @@ facts:
     value: Saved locally on device
   - label: Privacy
     value: No accounts or tracking
-highlights:
-  - title: Learn by playing
-    description: Explore the farm, meet animals, and pick up simple lessons through hands-on mini-games.
-    icon: "🐔"
-  - title: Built for Benjamin
-    description: Created as a learning game for Erwin's son — friendly, calm, and made to grow with him.
-    icon: "👦"
-  - title: Parents in mind
-    description: No ads, no accounts, and no data collection. Progress stays on the device.
-    icon: "🛡️"
 gallery:
-  - file: barn-hub.png
-    alt: Barnyard hub screen
-    caption: Choose which animals to visit on the farm.
-    orientation: portrait
-  - file: feeding-chickens.png
-    alt: Feeding chickens mini-game
-    caption: Feed the chickens and learn what they eat.
-    orientation: portrait
-  - file: farm-overview.png
-    alt: Farm overview screen
-    caption: A wider look at the farm layout.
+  - file: Puzzles.jpeg
+    title: Puzzle mini-games
+    alt: Math puzzle screen in the chicken meadow
+    caption: Short math puzzles on the farm earn puzzle coins — the currency for special animal skins.
+    orientation: landscape
+  - files:
+      - Screenshot_Animal_1.png
+      - Screenshot_Animal_2.png
+      - AnimalSkins.jpeg
+    title: Animal skins
+    alt: Custom animal skins earned and worn on the farm
+    caption: Spend puzzle coins on fun outfits — from a summer cow to a superhero sheep — then see them on your animals in the pen.
+    orientation: landscape
+  - file: Inventory.jpeg
+    title: Farm inventory
+    alt: Inventory screen showing eggs, milk, bacon, and carrots ready to sell
+    caption: Animals grow as kids solve puzzles and start producing eggs, milk, bacon, and carrots. Sell stock for gold.
+    orientation: landscape
+  - file: FarmMenuBackground.png
+    title: Grow your farm
+    alt: Panoramic farm view with barn, windmill, and open fields
+    caption: Use gold to buy more animals and unlock new areas — from the chicken meadow to the pig pen and beyond.
+    orientation: landscape
+  - file: Achievements.jpeg
+    title: Achievements
+    alt: Achievements screen tracking farm milestones
+    caption: Hit milestones — breed animals, reach production goals — and earn extra puzzle coins along the way.
     orientation: landscape
 ---
-
-## About the game
-
-Farm Academy is an Android learning game about life on the farm. Kids explore barns, meet animals, and learn through short playful activities — not lectures.
-
-The app is still in active development ahead of a wider Play Store release.
-
-## Built for Benjamin
-
-This project started as something to build together with Benjamin — a game that teaches a little about farm life while staying fun and low-pressure.
-
-Maybe he'll join B&E Labs for real one day.
-
-## Privacy & safety
-
-Progress is stored locally on the device. There are no accounts, no tracking, and no ads.
-
-A [privacy policy](../../privacy/farm-academy/) is available for parents and store listings.

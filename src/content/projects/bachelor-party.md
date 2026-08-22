@@ -2,7 +2,7 @@
 title: "Bachelor Party"
 status: "Friends & family"
 hook: "Wedding info site for a bachelor party weekend — now happily archived."
-featured: true
+featured: false
 icon: "💍"
 ---
 

@@ -5,6 +5,7 @@ import ProjectMedia from './ProjectMedia.astro';
 import ProjectFacts from './ProjectFacts.astro';
 import ProjectHighlights from './ProjectHighlights.astro';
 import ProjectGallery from './ProjectGallery.astro';
+import ImageLightbox from './ImageLightbox.astro';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -80,3 +81,5 @@ const heroPortrait = project.data.heroOrientation === 'portrait';
 		)
 	}
 </article>
+
+<ImageLightbox />

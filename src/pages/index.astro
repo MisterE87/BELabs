@@ -9,12 +9,11 @@ import BottomCta from '../components/BottomCta.astro';
 import { site } from '../lib/site';
 
 const projects = await getCollection('projects');
-const featured = projects.filter((project) => project.data.featured);
-const featuredProjects = (
-	featured.length >= 4
-		? featured
-		: [...featured, ...projects.filter((project) => !featured.includes(project))]
-).slice(0, 4);
+
+const heroFeaturedSlugs = ['aquarium', 'farm-academy', 'blue-chicken-board-games', 'board-stats'];
+const featuredProjects = heroFeaturedSlugs
+	.map((slug) => projects.find((project) => project.id === slug))
+	.filter((project): project is NonNullable<typeof project> => project !== undefined);
 ---
 
 <BaseLayout title={`${site.name} | Hobby apps & side projects`} headerVariant="home">

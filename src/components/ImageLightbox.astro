@@ -1,0 +1,16 @@
+<dialog id="gallery-lightbox" class="gallery-lightbox" aria-label="Enlarged screenshot">
+	<div class="gallery-lightbox-panel">
+		<button type="button" class="gallery-lightbox-close" data-lightbox-close aria-label="Close">
+			×
+		</button>
+		<img class="gallery-lightbox-image" alt="" />
+		<p class="gallery-lightbox-caption"></p>
+	</div>
+</dialog>
+
+<script>
+	import { initGalleryLightbox } from '../scripts/gallery-lightbox';
+
+	initGalleryLightbox();
+	document.addEventListener('astro:page-load', initGalleryLightbox);
+</script>

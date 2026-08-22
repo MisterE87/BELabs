@@ -147,9 +147,25 @@
 		@apply relative;
 	}
 
+	.project-detail-trigger {
+		@apply relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-white/10 bg-black/20 p-0 text-left shadow-lg transition hover:border-accent/50 hover:shadow-xl;
+	}
+
+	.project-detail-trigger:focus-visible {
+		@apply outline-2 outline-offset-2 outline-accent;
+	}
+
+	.project-detail-zoom-hint {
+		@apply pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3 text-sm font-semibold text-white opacity-0 transition-opacity;
+	}
+
+	.project-detail-trigger:hover .project-detail-zoom-hint,
+	.project-detail-trigger:focus-visible .project-detail-zoom-hint {
+		@apply opacity-100;
+	}
+
 	.project-detail-screenshot {
-		@apply w-full rounded-xl border border-white/10 object-cover object-top shadow-lg;
-		aspect-ratio: 16 / 10;
+		@apply h-auto w-full max-h-[min(70vh,40rem)] rounded-xl border border-white/10 object-contain object-top shadow-lg;
 	}
 
 	.project-detail-fallback {
@@ -286,7 +302,7 @@
 	}
 
 	.project-gallery-item--landscape .project-gallery-media {
-		max-width: 28rem;
+		max-width: min(100%, 42rem);
 	}
 
 	.project-gallery-item--portrait .project-gallery-media {
@@ -295,6 +311,11 @@
 
 	.project-gallery-media--multi {
 		@apply grid gap-4 sm:grid-cols-2;
+		max-width: min(100%, 48rem);
+	}
+
+	.project-gallery-item--landscape .project-gallery-media--multi {
+		max-width: min(100%, 56rem);
 	}
 
 	.project-gallery-trigger {
@@ -315,15 +336,12 @@
 	}
 
 	.project-gallery-image {
-		@apply w-full rounded-xl border-0 object-cover object-top;
+		@apply h-auto w-full rounded-xl border-0;
 	}
 
 	.project-gallery-item--portrait .project-gallery-image {
 		aspect-ratio: 9 / 19;
-	}
-
-	.project-gallery-item--landscape .project-gallery-image {
-		aspect-ratio: 16 / 10;
+		@apply object-cover object-top;
 	}
 
 	.brand-icon-glow {

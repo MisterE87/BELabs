@@ -19,6 +19,18 @@ export function projectScreenshotUrl(slug: string, base: string): string {
 	return `${base}images/projects/${slug}/screenshot.webp`;
 }
 
+const SCREENSHOT_SOURCE_NAMES = ['screenshot.png', 'screenshot.jpg', 'screenshot.jpeg', 'screenshot.heic'];
+
+export function projectScreenshotLightboxUrl(slug: string, base: string): string {
+	for (const name of SCREENSHOT_SOURCE_NAMES) {
+		if (hasProjectAsset(slug, name)) {
+			return `${base}images/projects/${slug}/${name}`;
+		}
+	}
+
+	return projectScreenshotUrl(slug, base);
+}
+
 export function projectHasIcon(slug: string): boolean {
 	return hasProjectAsset(slug, 'icon.png');
 }

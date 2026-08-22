@@ -27,7 +27,7 @@ Farm Academy is bedoeld voor kinderen van ongeveer 6 tot 12 jaar. Omdat wij geen
 
 ## Contact
 
-Vragen van ouders of verzorgers? Neem contact op via [Erwin van Wingerden](mailto:trek.falcon9317@eagereverest.com).
+Vragen van ouders of verzorgers? Neem contact op via [Erwin](mailto:trek.falcon9317@eagereverest.com).
 
 <!-- TODO: replace contact email with hello@belabs.nl when domain mail is ready -->
 

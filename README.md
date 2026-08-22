@@ -8,7 +8,7 @@ Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.c
 
 ## Local development
 
-Requires **Node.js 22+** (see `.nvmrc`).
+Requires **Node.js 24+** (see `.nvmrc`).
 
 ```bash
 npm install
@@ -203,7 +203,7 @@ gallery:
     orientation: portrait   # portrait | landscape
 ```
 
-Drop gallery source images in `public/images/projects/{slug}/gallery/` (png, jpg, webp, or heic), then run `npm run assets:optimize`. The script outputs `gallery/{name}.webp` — portrait images are resized to max 720px wide; landscape images to 1280×800.
+Drop gallery source images in `public/images/projects/{slug}/gallery/` (png, jpg, webp, or heic), then run `npm run assets:optimize`. The script outputs `gallery/{name}.webp` — portrait images are resized to max 720px wide; landscape images to max 1280px wide (aspect ratio preserved).
 
 ## Farm Academy privacy
 

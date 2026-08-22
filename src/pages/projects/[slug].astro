@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatusBadge from '../../components/StatusBadge.astro';
 import ProjectMedia from '../../components/ProjectMedia.astro';
 import ProjectShowcasePage from '../../components/ProjectShowcasePage.astro';
+import ImageLightbox from '../../components/ImageLightbox.astro';
 import { site } from '../../lib/site';
 
 export async function getStaticPaths() {
@@ -77,6 +78,8 @@ const hasBody = (project.body ?? '').trim().length > 0;
 					</div>
 				</section>
 			</article>
+
+			<ImageLightbox />
 		)
 	}
 </BaseLayout>
