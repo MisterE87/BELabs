@@ -8,6 +8,6 @@ projectUrl: "https://bluechickenboardgames.nl"
 captureUrl: "https://bluechickenboardgames.nl/games/"
 ---
 
-A static portfolio site showcasing Joost's published and in-development board games — built by B&E Labs for a friend who designs original games.
+A static portfolio site showcasing Joost's published and in-development board games.
 
 Includes game catalog, galleries, and publisher contact flow.
