@@ -1,0 +1,82 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import StatusBadge from './StatusBadge.astro';
+import ProjectMedia from './ProjectMedia.astro';
+import ProjectFacts from './ProjectFacts.astro';
+import ProjectHighlights from './ProjectHighlights.astro';
+import ProjectGallery from './ProjectGallery.astro';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+	hasBody?: boolean;
+}
+
+const { project, hasBody = true } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const facts = project.data.facts ?? [];
+const highlights = project.data.highlights ?? [];
+const heroPortrait = project.data.heroOrientation === 'portrait';
+---
+
+<article>
+	<section class="hero-dark border-b border-white/10">
+		<div class="page-shell py-16">
+			<div class="reveal grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+				<div class="space-y-6">
+					<StatusBadge status={project.data.status} />
+					<h1 class="text-4xl text-white md:text-5xl">{project.data.title}</h1>
+					<p class="text-xl text-white/80">{project.data.hook}</p>
+					<div class="flex flex-wrap gap-4">
+						{
+							project.data.projectUrl && (
+								<a
+									href={project.data.projectUrl}
+									class="btn-hero-primary"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Visit project
+								</a>
+							)
+						}
+						{
+							project.data.privacyUrl && (
+								<a href={`${base}${project.data.privacyUrl.replace(/^\//, '')}`} class="btn-hero-secondary">
+									Privacy policy
+								</a>
+							)
+						}
+					</div>
+				</div>
+
+				<div class:list={['reveal', heroPortrait && 'phone-frame']}>
+					<ProjectMedia project={project} variant="detail" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ProjectGallery project={project} />
+
+	<ProjectHighlights highlights={highlights} />
+
+	{
+		hasBody && (
+			<section class="page-shell">
+				<div class="reveal prose-editorial max-w-3xl">
+					<slot />
+				</div>
+			</section>
+		)
+	}
+
+	{
+		facts.length > 0 && (
+			<section class="border-t border-line bg-paper">
+				<div class="page-shell py-10">
+					<ProjectFacts facts={facts} />
+				</div>
+			</section>
+		)
+	}
+</article>

@@ -1,0 +1,137 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import {
+	projectHasIcon,
+	projectHasScreenshot,
+	projectIconUrl,
+	projectScreenshotUrl,
+} from '../lib/projectAssets';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+	variant: 'card' | 'hero-row' | 'hero-tile' | 'detail';
+}
+
+const { project, variant } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const slug = project.id;
+const hasScreenshot = projectHasScreenshot(slug);
+const hasIcon = projectHasIcon(slug);
+const screenshotSrc = projectScreenshotUrl(slug, base);
+const iconSrc = projectIconUrl(slug, base);
+const emoji = project.data.icon;
+const title = project.data.title;
+---
+
+{
+	variant === 'card' && (
+		<div class="project-card-media">
+			{
+				hasScreenshot ? (
+					<img src={screenshotSrc} alt={`${title} screenshot`} class="project-screenshot" loading="lazy" />
+				) : hasIcon ? (
+					<div class="project-card-fallback flex items-center justify-center bg-gradient-to-br from-sky/80 via-mint/20 to-paper">
+						<img src={iconSrc} alt="" class="h-20 w-20 rounded-xl object-contain" />
+					</div>
+				) : (
+					<div class="project-card-fallback flex items-center justify-center bg-gradient-to-br from-sky/80 via-mint/20 to-paper text-6xl">
+						<span aria-hidden="true">{emoji}</span>
+					</div>
+				)
+			}
+			{
+				(hasScreenshot || hasIcon) && (
+					<div class="project-icon-badge" aria-hidden="true">
+						{
+							hasIcon ? (
+								<img src={iconSrc} alt="" class="h-full w-full object-contain" />
+							) : (
+								<span class="text-lg">{emoji}</span>
+							)
+						}
+					</div>
+				)
+			}
+		</div>
+	)
+}
+
+{
+	variant === 'hero-row' && (
+		<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/10">
+			{
+				hasIcon ? (
+					<img src={iconSrc} alt="" class="h-full w-full object-contain" />
+				) : (
+					<span class="text-xl" aria-hidden="true">{emoji}</span>
+				)
+			}
+		</span>
+	)
+}
+
+{
+	variant === 'hero-tile' && (
+		<div class="hero-bento-media">
+			{
+				hasScreenshot ? (
+					<img src={screenshotSrc} alt="" class="hero-bento-screenshot" loading="lazy" />
+				) : hasIcon ? (
+					<div class="hero-bento-fallback flex items-center justify-center bg-gradient-to-br from-sky/80 via-mint/20 to-paper">
+						<img src={iconSrc} alt="" class="h-14 w-14 rounded-xl object-contain" />
+					</div>
+				) : (
+					<div class="hero-bento-fallback flex items-center justify-center bg-gradient-to-br from-sky/80 via-mint/20 to-paper text-4xl">
+						<span aria-hidden="true">{emoji}</span>
+					</div>
+				)
+			}
+			{
+				hasScreenshot && (
+					<div class="project-icon-badge project-icon-badge-hero" aria-hidden="true">
+						{
+							hasIcon ? (
+								<img src={iconSrc} alt="" class="h-full w-full object-contain" />
+							) : (
+								<span class="text-sm">{emoji}</span>
+							)
+						}
+					</div>
+				)
+			}
+		</div>
+	)
+}
+
+{
+	variant === 'detail' && (
+		<div class="project-detail-media">
+			{
+				hasScreenshot ? (
+					<img src={screenshotSrc} alt={`${title} screenshot`} class="project-detail-screenshot" loading="lazy" />
+				) : hasIcon ? (
+					<div class="project-detail-fallback flex aspect-square items-center justify-center rounded-xl border border-white/10 bg-white/5">
+						<img src={iconSrc} alt="" class="h-40 w-40 object-contain" />
+					</div>
+				) : (
+					<div class="project-detail-fallback flex aspect-square items-center justify-center rounded-xl border border-white/10 bg-white/5 text-8xl">
+						<span aria-hidden="true">{emoji}</span>
+					</div>
+				)
+			}
+			{
+				hasScreenshot && (
+					<div class="project-icon-badge project-icon-badge-detail" aria-hidden="true">
+						{
+							hasIcon ? (
+								<img src={iconSrc} alt="" class="h-full w-full object-contain" />
+							) : (
+								<span class="text-xl">{emoji}</span>
+							)
+						}
+					</div>
+				)
+			}
+		</div>
+	)
+}

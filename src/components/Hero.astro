@@ -1,58 +1,64 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+import StatusBadge from './StatusBadge.astro';
+import ProjectMedia from './ProjectMedia.astro';
+import { site } from '../lib/site';
+
 interface Props {
-	eyebrow?: string;
-	title: string;
 	description: string;
-	primaryHref?: string;
-	primaryLabel?: string;
-	secondaryHref?: string;
-	secondaryLabel?: string;
+	featuredProjects: CollectionEntry<'projects'>[];
 }
 
-const {
-	eyebrow = 'Hobby projects · side experiments',
-	title,
-	description,
-	primaryHref = '/projects/',
-	primaryLabel = 'Browse projects',
-	secondaryHref = '/about/',
-	secondaryLabel = 'About B&E Labs',
-} = Astro.props;
+const { description, featuredProjects } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const brandIconSrc = `${base}images/BELabsIcon.png`;
 ---
 
-<section class="page-header-bg relative overflow-hidden">
-	<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-[1.2fr_0.8fr] md:py-28">
-		<div class="reveal space-y-6">
-			<p class="eyebrow">{eyebrow}</p>
-			<h1 class="max-w-3xl text-5xl leading-tight md:text-6xl">{title}</h1>
-			<p class="max-w-2xl text-xl text-muted">{description}</p>
-			<div class="flex flex-wrap gap-4 pt-2">
-				<a href={`${base}${primaryHref.replace(/^\//, '')}`} class="btn-primary">
-					{primaryLabel}
-				</a>
-				<a href={`${base}${secondaryHref.replace(/^\//, '')}`} class="btn-secondary">
-					{secondaryLabel}
-				</a>
+<section id="top" class="hero-dark scroll-mt-20">
+	<div class="page-shell flex min-h-[80vh] flex-col justify-center py-16 lg:py-24">
+		<div class="reveal grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+			<div class="space-y-8">
+				<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+					<img
+						src={brandIconSrc}
+						alt=""
+						width="112"
+						height="112"
+						class="brand-icon-glow h-24 w-24 shrink-0 rounded-2xl object-cover md:h-28 md:w-28 md:rounded-3xl"
+					/>
+					<div>
+						<p class="eyebrow-on-dark">{site.tagline}</p>
+						<p class="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+							Build · Explore · Create
+						</p>
+					</div>
+				</div>
+				<h1 class="text-4xl leading-[1.08] md:text-5xl lg:text-6xl">
+					Small experiments from the van Wingerden kitchen table.
+				</h1>
+				<p class="max-w-xl text-lg text-white/80 md:text-xl">{description}</p>
+				<div class="flex flex-wrap gap-4">
+					<a href="#projects" class="btn-brand">Explore the lab</a>
+					<a href="#about" class="btn-hero-secondary">About B&E Labs</a>
+				</div>
 			</div>
-		</div>
 
-		<div class="reveal card-muted">
-			<p class="text-sm font-semibold uppercase tracking-[0.2em] text-muted">Why B&E?</p>
-			<ul class="mt-6 space-y-4 text-muted">
-				<li class="flex gap-3">
-					<span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent"></span>
-					<span><strong class="text-ink">B</strong>enjamin — my son, who might join the experiments one day</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-amber"></span>
-					<span><strong class="text-ink">E</strong>rwin — product owner by day, curious builder in spare time</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent"></span>
-					<span>Small apps and sites for fun — not a startup pitch deck</span>
-				</li>
-			</ul>
+			<div class="reveal hero-bento">
+				<p class="eyebrow-on-dark mb-3 px-1">Featured from the lab</p>
+				<div class="grid grid-cols-2 gap-2">
+					{
+						featuredProjects.map((project) => (
+							<a href={`${base}projects/${project.id}/`} class="hero-bento-tile group">
+								<ProjectMedia project={project} variant="hero-tile" />
+								<div class="hero-bento-overlay">
+									<span class="font-semibold text-white">{project.data.title}</span>
+									<StatusBadge status={project.data.status} tone="on-dark" />
+								</div>
+							</a>
+						))
+					}
+				</div>
+			</div>
 		</div>
 	</div>
 </section>

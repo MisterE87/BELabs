@@ -6,10 +6,19 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "predev": "node scripts/optimize-project-assets.mjs && node scripts/generate-favicon.mjs",
+    "prebuild": "node scripts/optimize-project-assets.mjs && node scripts/generate-favicon.mjs",
+    "dev": "BASE_PATH=/ astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro preview --port 4323",
+    "assets:capture": "node scripts/capture-project-assets.mjs",
+    "assets:optimize": "node scripts/optimize-project-assets.mjs",
+    "favicon:generate": "node scripts/generate-favicon.mjs",
     "astro": "astro"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0",
+    "sharp": "^0.34.3"
   },
   "dependencies": {
     "@fontsource/nunito": "^5.2.7",

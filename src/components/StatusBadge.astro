@@ -1,17 +1,26 @@
 ---
 interface Props {
 	status: 'Live' | 'In development' | 'Friends & family';
+	tone?: 'default' | 'on-dark';
 }
 
-const { status } = Astro.props;
+const { status, tone = 'default' } = Astro.props;
 
-const styles: Record<Props['status'], string> = {
-	Live: 'bg-accent/20 text-accent-dark',
-	'In development': 'bg-amber/20 text-ink',
-	'Friends & family': 'bg-sky text-ink',
+const defaultStyles: Record<Props['status'], string> = {
+	Live: 'bg-accent/25 text-accent-dark border border-accent/30',
+	'In development': 'bg-amber/30 text-ink border border-amber/40',
+	'Friends & family': 'bg-mint/40 text-ink border border-mint/50',
 };
+
+const onDarkStyles: Record<Props['status'], string> = {
+	Live: 'bg-mint/35 text-white border border-mint/50',
+	'In development': 'bg-amber/35 text-white border border-amber/50',
+	'Friends & family': 'bg-sky/35 text-white border border-sky/50',
+};
+
+const styles = tone === 'on-dark' ? onDarkStyles : defaultStyles;
 ---
 
-<span class:list={['inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide', styles[status]]}>
+<span class:list={['inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide', styles[status]]}>
 	{status}
 </span>

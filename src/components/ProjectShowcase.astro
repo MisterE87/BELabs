@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+import { projectsByStatus } from '../lib/projectStatus';
+
+interface Props {
+	projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+const sections = projectsByStatus(projects);
+
+const pitches: Record<string, string> = {
+	Live: 'Shipped and out in the wild.',
+	'In development': 'Still taking shape before a wider release.',
+	'Friends & family': 'Small tools for people close to home.',
+};
+---
+
+<section id="projects" class="scroll-mt-20 border-b border-line bg-surface">
+	<div class="page-shell">
+		<div class="reveal section-heading">
+			<p class="eyebrow">Projects</p>
+			<h2>Everything in the lab</h2>
+			<p>Apps and sites grouped by how public they are.</p>
+		</div>
+
+		<div class="mt-16 space-y-16">
+			{
+				sections.map(
+					(section) =>
+						section.projects.length > 0 && (
+							<div class="reveal">
+								<div class="mb-8">
+									<h3 class="subsection-title">
+										<span class="subsection-accent" aria-hidden="true"></span>
+										{section.title}
+									</h3>
+									<p class="mt-2 text-muted">{pitches[section.status]}</p>
+								</div>
+								<div class="project-grid">
+									{section.projects.map((project) => (
+										<ProjectCard project={project} />
+									))}
+								</div>
+							</div>
+						),
+				)
+			}
+		</div>
+	</div>
+</section>

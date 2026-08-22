@@ -1,0 +1,35 @@
+---
+interface Highlight {
+	title: string;
+	description: string;
+	icon?: string;
+}
+
+interface Props {
+	highlights: Highlight[];
+}
+
+const { highlights } = Astro.props;
+---
+
+{
+	highlights.length > 0 && (
+		<section class="border-b border-line bg-surface">
+			<div class="page-shell py-16">
+				<div class="reveal feature-grid">
+					{highlights.map((highlight) => (
+						<article class="feature-card">
+							{highlight.icon && (
+								<span class="text-2xl" aria-hidden="true">
+									{highlight.icon}
+								</span>
+							)}
+							<h3 class={`text-xl font-bold ${highlight.icon ? 'mt-4' : ''}`}>{highlight.title}</h3>
+							<p class="mt-3 text-muted">{highlight.description}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+	)
+}

@@ -33,38 +33,337 @@
 
 @layer utilities {
 	.page-shell {
-		@apply mx-auto max-w-6xl px-6 py-20;
+		@apply mx-auto max-w-7xl px-6 py-20 lg:px-8;
 	}
 
 	.page-intro {
 		@apply max-w-3xl space-y-6;
 	}
 
-	.page-header-bg {
-		@apply border-b border-line bg-surface;
-		background-image:
-			radial-gradient(circle at top right, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 55%),
-			radial-gradient(circle at bottom left, color-mix(in srgb, var(--color-amber) 14%, transparent), transparent 50%);
+	.section-heading {
+		@apply mx-auto max-w-2xl text-center;
 	}
 
-	.card {
-		@apply rounded-3xl border border-line bg-surface p-8 shadow-sm;
+	.section-heading h2 {
+		@apply text-3xl md:text-4xl lg:text-5xl;
 	}
 
-	.card-muted {
-		@apply rounded-3xl border border-line bg-paper p-8 shadow-sm;
+	.section-heading p {
+		@apply mt-4 text-lg text-muted md:text-xl;
 	}
 
 	.eyebrow {
-		@apply text-sm font-semibold uppercase tracking-[0.24em] text-accent-dark;
+		@apply text-sm font-semibold uppercase tracking-[0.2em] text-accent-dark;
+	}
+
+	.eyebrow-on-dark {
+		@apply text-sm font-semibold uppercase tracking-[0.2em] text-white/70;
+	}
+
+	.hero-dark {
+		@apply relative min-h-[80vh] overflow-hidden text-white;
+		background-color: var(--theme-ink);
+		background-image:
+			radial-gradient(ellipse 80% 60% at 80% 0%, color-mix(in srgb, var(--theme-accent) 45%, transparent), transparent 55%),
+			radial-gradient(ellipse 60% 50% at 10% 100%, color-mix(in srgb, var(--theme-mint) 35%, transparent), transparent 50%),
+			radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--theme-amber) 12%, transparent), transparent 70%);
+	}
+
+	.section-dark {
+		@apply text-white;
+		background-color: var(--theme-ink);
+		background-image:
+			radial-gradient(ellipse 70% 80% at 50% 120%, color-mix(in srgb, var(--theme-accent) 30%, transparent), transparent 60%),
+			radial-gradient(ellipse 50% 60% at 100% 0%, color-mix(in srgb, var(--theme-mint) 20%, transparent), transparent 55%);
+	}
+
+	.hero-bento {
+		@apply overflow-hidden rounded-xl border p-3 shadow-2xl;
+		border-color: color-mix(in srgb, white 14%, transparent);
+		background-color: color-mix(in srgb, var(--theme-ink) 88%, black);
+	}
+
+	.hero-bento-tile {
+		@apply relative block overflow-hidden rounded-lg transition;
+	}
+
+	.hero-bento-tile:hover {
+		@apply ring-2 ring-accent/40;
+	}
+
+	.hero-bento-media {
+		@apply relative overflow-hidden;
+	}
+
+	.hero-bento-screenshot {
+		@apply aspect-[16/10] w-full object-cover object-top;
+	}
+
+	.hero-bento-fallback {
+		@apply aspect-[16/10] w-full;
+	}
+
+	.hero-bento-overlay {
+		@apply absolute inset-x-0 bottom-0 flex flex-col gap-1.5 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8;
+	}
+
+	.feature-card {
+		@apply rounded-xl border border-line bg-surface p-6;
+	}
+
+	.project-card {
+		@apply flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition hover:border-accent/40 hover:shadow-md;
+	}
+
+	.project-card-icon {
+		@apply flex h-36 items-center justify-center bg-gradient-to-br from-sky/80 via-mint/20 to-paper text-5xl;
+	}
+
+	.project-card-media {
+		@apply relative overflow-hidden;
+	}
+
+	.project-card-fallback {
+		@apply aspect-[16/10] w-full;
+	}
+
+	.project-screenshot {
+		@apply aspect-[16/10] w-full object-cover object-top;
+	}
+
+	.project-icon-badge {
+		@apply absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg border border-line bg-surface p-1 shadow-sm;
+	}
+
+	.project-icon-badge-detail {
+		@apply bottom-4 left-4 h-12 w-12;
+	}
+
+	.project-icon-badge-hero {
+		@apply bottom-2 left-2 h-7 w-7 p-0.5;
+	}
+
+	.project-detail-media {
+		@apply relative;
+	}
+
+	.project-detail-screenshot {
+		@apply w-full rounded-xl border border-white/10 object-cover object-top shadow-lg;
+		aspect-ratio: 16 / 10;
+	}
+
+	.project-detail-fallback {
+		@apply max-h-96 w-full lg:max-h-none;
 	}
 
 	.btn-primary {
-		@apply inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-accent-dark;
+		@apply inline-flex items-center rounded-lg bg-accent-dark px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent;
 	}
 
 	.btn-secondary {
-		@apply inline-flex items-center rounded-full border border-line px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink hover:border-accent hover:text-accent-dark;
+		@apply inline-flex items-center rounded-lg border border-line bg-surface px-5 py-2.5 text-sm font-semibold text-ink hover:border-accent hover:text-accent-dark;
+	}
+
+	.btn-hero-primary {
+		@apply inline-flex items-center rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-ink shadow-sm hover:bg-white/90;
+	}
+
+	.btn-hero-secondary {
+		@apply inline-flex items-center rounded-lg border px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10;
+		border-color: color-mix(in srgb, white 25%, transparent);
+	}
+
+	.btn-header-cta {
+		@apply hidden items-center rounded-lg bg-accent-dark px-4 py-2 text-sm font-semibold text-white hover:bg-accent md:inline-flex;
+	}
+
+	.card {
+		@apply rounded-xl border border-line bg-surface p-8 shadow-sm;
+	}
+
+	.card-muted {
+		@apply rounded-xl border border-line bg-paper p-8 shadow-sm;
+	}
+
+	.nav-link {
+		@apply text-sm font-medium text-muted hover:text-accent-dark;
+	}
+
+	.nav-link.is-active {
+		@apply text-accent-dark;
+	}
+
+	.nav-link-dark {
+		@apply text-sm font-medium text-white/85 hover:text-white;
+		text-shadow: 0 1px 3px color-mix(in srgb, var(--theme-ink) 55%, transparent);
+	}
+
+	.nav-link-dark.is-active {
+		@apply text-white;
+	}
+
+	.site-header-dark {
+		@apply border-transparent text-white;
+		background-color: color-mix(in srgb, var(--theme-ink) 72%, transparent);
+		backdrop-filter: blur(10px);
+	}
+
+	.site-header-dark[data-scrolled='true'] {
+		border-color: color-mix(in srgb, white 12%, transparent);
+		background-color: color-mix(in srgb, var(--theme-ink) 94%, transparent);
+	}
+
+	.footer-dark {
+		@apply border-t text-white/80;
+		border-color: color-mix(in srgb, white 10%, transparent);
+		background-color: var(--theme-ink);
+	}
+
+	.subsection-title {
+		@apply flex items-center gap-3 text-2xl font-bold text-ink;
+	}
+
+	.subsection-accent {
+		@apply h-8 w-1 rounded-full;
+		background: linear-gradient(to bottom, var(--theme-accent), var(--theme-mint));
+	}
+
+	.btn-brand {
+		@apply inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition;
+		background: linear-gradient(135deg, var(--theme-accent-dark) 0%, var(--theme-mint) 100%);
+	}
+
+	.btn-brand:hover {
+		filter: brightness(1.08);
+	}
+
+	.project-grid {
+		@apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+	}
+
+	.feature-grid {
+		@apply grid gap-6 md:grid-cols-3;
+	}
+
+	.project-facts {
+		@apply flex flex-wrap gap-4;
+	}
+
+	.project-fact {
+		@apply rounded-xl border border-line bg-paper px-5 py-4;
+	}
+
+	.project-fact-label {
+		@apply text-xs font-semibold uppercase tracking-[0.15em] text-muted;
+	}
+
+	.project-fact-value {
+		@apply mt-1 text-lg font-semibold text-ink;
+	}
+
+	.project-gallery {
+		@apply grid gap-14;
+	}
+
+	.project-gallery-item {
+		@apply m-0 grid items-center gap-8 lg:grid-cols-[1.1fr_0.85fr] lg:gap-12;
+	}
+
+	.project-gallery-copy {
+		@apply space-y-4;
+	}
+
+	.project-gallery-title {
+		@apply text-2xl text-ink md:text-3xl;
+	}
+
+	.project-gallery-caption {
+		@apply text-lg leading-8 text-muted;
+	}
+
+	.project-gallery-media {
+		@apply w-full justify-self-center lg:justify-self-end;
+	}
+
+	.project-gallery-item--landscape .project-gallery-media {
+		max-width: 28rem;
+	}
+
+	.project-gallery-item--portrait .project-gallery-media {
+		max-width: 14rem;
+	}
+
+	.project-gallery-media--multi {
+		@apply grid gap-4 sm:grid-cols-2;
+	}
+
+	.project-gallery-trigger {
+		@apply relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-line bg-paper p-0 text-left shadow-sm transition hover:border-accent/40 hover:shadow-md;
+	}
+
+	.project-gallery-trigger:focus-visible {
+		@apply outline-2 outline-offset-2 outline-accent;
+	}
+
+	.project-gallery-zoom-hint {
+		@apply pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-4 py-3 text-sm font-semibold text-white opacity-0 transition-opacity;
+	}
+
+	.project-gallery-trigger:hover .project-gallery-zoom-hint,
+	.project-gallery-trigger:focus-visible .project-gallery-zoom-hint {
+		@apply opacity-100;
+	}
+
+	.project-gallery-image {
+		@apply w-full rounded-xl border-0 object-cover object-top;
+	}
+
+	.project-gallery-item--portrait .project-gallery-image {
+		aspect-ratio: 9 / 19;
+	}
+
+	.project-gallery-item--landscape .project-gallery-image {
+		aspect-ratio: 16 / 10;
+	}
+
+	.brand-icon-glow {
+		border: 2px solid color-mix(in srgb, var(--theme-accent) 35%, transparent);
+		box-shadow:
+			0 0 0 1px color-mix(in srgb, var(--theme-mint) 25%, transparent),
+			0 12px 40px color-mix(in srgb, var(--theme-accent) 28%, transparent),
+			0 8px 24px color-mix(in srgb, var(--theme-mint) 18%, transparent);
+	}
+
+	.gallery-lightbox {
+		@apply fixed inset-0 z-50 m-0 h-full max-h-none w-full max-w-none border-0 bg-transparent p-4;
+	}
+
+	.gallery-lightbox::backdrop {
+		background-color: rgb(0 0 0 / 0.88);
+	}
+
+	.gallery-lightbox-panel {
+		@apply relative mx-auto flex h-full max-w-6xl flex-col items-center justify-center gap-4;
+	}
+
+	.gallery-lightbox-image {
+		@apply max-h-[calc(100vh-8rem)] w-auto max-w-full rounded-xl object-contain shadow-2xl;
+	}
+
+	.gallery-lightbox-caption {
+		@apply max-w-3xl text-center text-sm text-white/80;
+	}
+
+	.gallery-lightbox-close {
+		@apply absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-2xl leading-none text-white transition hover:bg-white/20;
+	}
+
+	.phone-frame {
+		@apply rounded-[2rem] border-4 border-white/20 bg-white/5 p-3 shadow-2xl;
+	}
+
+	.phone-frame .project-detail-screenshot {
+		@apply rounded-[1.25rem];
 	}
 }
 

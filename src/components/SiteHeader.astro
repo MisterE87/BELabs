@@ -1,44 +1,86 @@
 ---
 import { site } from '../lib/site';
 
+interface Props {
+	variant?: 'home' | 'minimal';
+	backHref?: string;
+	backLabel?: string;
+}
+
+const { variant = 'home', backHref, backLabel = '← Back to lab' } = Astro.props;
+
 const nav = [
-	{ href: '/projects/', label: 'Projects' },
-	{ href: '/about/', label: 'About' },
-	{ href: '/contact/', label: 'Contact' },
+	{ href: '#about', label: 'About', id: 'about' },
+	{ href: '#projects', label: 'Projects', id: 'projects' },
+	{ href: '#contact', label: 'Contact', id: 'contact' },
 ];
 const base = import.meta.env.BASE_URL;
+const homeHref = `${base}`;
+const isHome = variant === 'home';
 ---
 
-<header class="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-md">
-	<div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
-		<a href={`${base}`} class="group flex flex-col">
-			<span class="font-display text-xl font-extrabold tracking-tight group-hover:text-accent-dark">{site.name}</span>
-			<span class="text-xs uppercase tracking-[0.2em] text-muted">{site.tagline}</span>
+<header
+	class:list={[
+		'sticky top-0 z-50 transition-colors duration-300',
+		isHome ? 'site-header-dark' : 'border-b border-line/80 bg-paper/90 backdrop-blur-md',
+	]}
+	data-site-header
+	data-header-theme={isHome ? 'dark' : 'light'}
+	data-scrolled="false"
+>
+	<div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-8">
+		<a
+			href={homeHref}
+			class:list={[
+				'flex items-center gap-2.5 font-display text-lg font-extrabold tracking-tight hover:opacity-90',
+				isHome ? 'text-white' : 'text-ink',
+			]}
+		>
+			<img
+				src={`${base}images/BELabsIcon.png`}
+				alt=""
+				width="24"
+				height="24"
+				class="h-6 w-6 shrink-0 rounded-md object-cover"
+			/>
+			{site.name}
 		</a>
 
-		<nav class="hidden items-center gap-8 md:flex" aria-label="Main">
-			{
-				nav.map((item) => (
-					<a href={`${base}${item.href.replace(/^\//, '')}`} class="text-sm font-semibold uppercase tracking-wide text-muted hover:text-accent-dark">
-						{item.label}
-					</a>
-				))
-			}
-		</nav>
-
-		<details class="relative md:hidden">
-			<summary class="cursor-pointer list-none rounded-full border border-line px-4 py-2 text-sm font-semibold uppercase tracking-wide">
-				Menu
-			</summary>
-			<div class="absolute right-0 mt-3 min-w-40 rounded-2xl border border-line bg-surface p-3 shadow-lg">
-				{
-					nav.map((item) => (
-						<a href={`${base}${item.href.replace(/^\//, '')}`} class="block rounded-xl px-3 py-2 text-sm font-semibold text-muted hover:bg-paper hover:text-accent-dark">
-							{item.label}
+		{
+			isHome ? (
+				<>
+					<nav class="hidden items-center gap-8 md:flex" aria-label="Main" data-scroll-nav>
+						{nav.map((item) => (
+							<a href={item.href} class="nav-link-dark" data-section={item.id}>
+								{item.label}
+							</a>
+						))}
+					</nav>
+					<div class="flex items-center gap-3">
+						<a href="#projects" class="btn-header-cta">
+							See projects
 						</a>
-					))
-				}
-			</div>
-		</details>
+						<details class="relative md:hidden">
+							<summary class="cursor-pointer list-none rounded-lg border border-white/20 px-3 py-2 text-sm font-semibold text-white">
+								Menu
+							</summary>
+							<div class="absolute right-0 mt-3 min-w-40 rounded-xl border border-line bg-surface p-3 shadow-lg">
+								{nav.map((item) => (
+									<a href={item.href} class="block rounded-lg px-3 py-2 text-sm font-semibold text-muted hover:bg-paper hover:text-accent-dark">
+										{item.label}
+									</a>
+								))}
+							</div>
+						</details>
+					</div>
+				</>
+			) : (
+				backHref && (
+					<a href={backHref} class="text-sm font-semibold text-accent-dark hover:text-accent">
+						{backLabel}
+					</a>
+				)
+			)
+		}
 	</div>
 </header>

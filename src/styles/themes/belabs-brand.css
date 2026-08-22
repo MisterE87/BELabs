@@ -1,0 +1,17 @@
+/*
+ * B&E Labs — Brand palette (from BELabsIcon)
+ * Blue-to-green gradient — Build · Explore · Create
+ */
+:root,
+[data-theme='belabs-brand'] {
+	--theme-paper: #f2f6fa;
+	--theme-ink: #12151c;
+	--theme-accent: #0090e8;
+	--theme-accent-dark: #0052d4;
+	--theme-amber: #f4a261;
+	--theme-muted: #5c6b7a;
+	--theme-surface: #fafcfe;
+	--theme-line: #d4e2ef;
+	--theme-sky: #d6eaf8;
+	--theme-mint: #00b894;
+}

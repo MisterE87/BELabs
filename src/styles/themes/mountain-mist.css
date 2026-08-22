@@ -1,0 +1,16 @@
+/*
+ * B&E Labs — Mountain Mist palette (Figma Combination 83)
+ * Slate gray, misty blue, and pine green — calm mountain morning fog.
+ */
+[data-theme='mountain-mist'] {
+	--theme-paper: #eef2f0;
+	--theme-ink: #2f3e46;
+	--theme-accent: #52796f;
+	--theme-accent-dark: #354f52;
+	--theme-amber: #7ba3b8;
+	--theme-muted: #5a6a64;
+	--theme-surface: #f9fbfa;
+	--theme-line: #c5d0cc;
+	--theme-sky: #d4e3ec;
+	--theme-mint: #84a98c;
+}

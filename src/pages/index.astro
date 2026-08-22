@@ -2,89 +2,25 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import HomeProjectSection from '../components/HomeProjectSection.astro';
-import { projectsByStatus } from '../lib/projectStatus';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ProjectShowcase from '../components/ProjectShowcase.astro';
+import BottomCta from '../components/BottomCta.astro';
 import { site } from '../lib/site';
 
 const projects = await getCollection('projects');
-const sections = projectsByStatus(projects);
-const liveProjects = sections.find((section) => section.status === 'Live')?.projects ?? [];
-const inDevProjects = sections.find((section) => section.status === 'In development')?.projects ?? [];
-const friendsProjects = sections.find((section) => section.status === 'Friends & family')?.projects ?? [];
+const featured = projects.filter((project) => project.data.featured);
+const featuredProjects = (
+	featured.length >= 4
+		? featured
+		: [...featured, ...projects.filter((project) => !featured.includes(project))]
+).slice(0, 4);
 ---
 
-<BaseLayout title={`${site.name} | Hobby apps & side projects`}>
-	<Hero
-		title="Small experiments from the van Wingerden kitchen table."
-		description={site.description}
-		primaryHref="/projects/"
-		primaryLabel="Browse projects"
-		secondaryHref="/about/"
-		secondaryLabel="About B&E Labs"
-	/>
-
-	{
-		liveProjects.length > 0 && (
-			<HomeProjectSection
-				eyebrow="Live"
-				title="Out in the wild"
-				projects={liveProjects}
-				linkHref="/projects/"
-				linkLabel="All projects →"
-				bandClass="border-t-0"
-			/>
-		)
-	}
-
-	{
-		inDevProjects.length > 0 && (
-			<HomeProjectSection
-				eyebrow="In development"
-				title="Still brewing in the lab"
-				projects={inDevProjects}
-				linkHref="/projects/"
-				linkLabel="All projects →"
-				bandClass="bg-surface"
-			/>
-		)
-	}
-
-	{
-		friendsProjects.length > 0 && (
-			<HomeProjectSection
-				eyebrow="Friends & family"
-				title="Built for people close to home"
-				projects={friendsProjects}
-				linkHref="/projects/"
-				linkLabel="All projects →"
-				bandClass="bg-paper"
-			/>
-		)
-	}
-
-	<section class="border-t border-line bg-surface">
-		<div class="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-3">
-			<div class="reveal card-muted">
-				<p class="eyebrow">Day job</p>
-				<h3 class="mt-3 text-2xl">Product owner</h3>
-				<p class="mt-4 text-muted">
-					Erwin works in software development as a product owner — curious about how products are shaped, shipped, and improved.
-				</p>
-			</div>
-			<div class="reveal card-muted">
-				<p class="eyebrow">Evenings</p>
-				<h3 class="mt-3 text-2xl">Hobby builder</h3>
-				<p class="mt-4 text-muted">
-					Apps and sites for board games, family trips, aquarium filters, and the occasional CS2 stats deep-dive.
-				</p>
-			</div>
-			<div class="reveal card-muted">
-				<p class="eyebrow">Future lab partner</p>
-				<h3 class="mt-3 text-2xl">Benjamin</h3>
-				<p class="mt-4 text-muted">
-					Farm Academy is the first project with Benjamin in mind — maybe he joins B&E Labs for real one day.
-				</p>
-			</div>
-		</div>
-	</section>
+<BaseLayout title={`${site.name} | Hobby apps & side projects`} headerVariant="home">
+	<Hero description={site.description} featuredProjects={featuredProjects} />
+	<FeatureGrid />
+	<AboutSection />
+	<ProjectShowcase projects={projects} />
+	<BottomCta />
 </BaseLayout>

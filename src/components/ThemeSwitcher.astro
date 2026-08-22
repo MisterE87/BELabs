@@ -1,0 +1,103 @@
+<div class="theme-switcher" aria-label="Dev theme comparison">
+	<p class="theme-switcher-label">Palette</p>
+	<div class="theme-switcher-options">
+		<button type="button" class="theme-switcher-btn" data-theme-option="belabs-brand" aria-pressed="true">
+			<span class="theme-swatch theme-swatch-brand" aria-hidden="true"></span>
+			B&amp;E Brand
+		</button>
+		<button type="button" class="theme-switcher-btn" data-theme-option="electric-kiwi" aria-pressed="false">
+			<span class="theme-swatch theme-swatch-kiwi" aria-hidden="true"></span>
+			Electric Kiwi
+		</button>
+		<button type="button" class="theme-switcher-btn" data-theme-option="mountain-mist" aria-pressed="false">
+			<span class="theme-swatch theme-swatch-mist" aria-hidden="true"></span>
+			Mountain Mist
+		</button>
+		<button type="button" class="theme-switcher-btn" data-theme-option="alchemical-reaction" aria-pressed="false">
+			<span class="theme-swatch theme-swatch-alchemy" aria-hidden="true"></span>
+			Alchemical Reaction
+		</button>
+	</div>
+</div>
+
+<style>
+	.theme-switcher {
+		position: fixed;
+		right: 1rem;
+		bottom: 1rem;
+		z-index: 100;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 0.75rem;
+		border: 1px solid var(--color-line);
+		border-radius: 1rem;
+		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+		backdrop-filter: blur(8px);
+		box-shadow: 0 8px 24px color-mix(in srgb, var(--color-ink) 12%, transparent);
+	}
+
+	.theme-switcher-label {
+		font-size: 0.65rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.16em;
+		color: var(--color-muted);
+	}
+
+	.theme-switcher-options {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.theme-switcher-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border: 1px solid var(--color-line);
+		border-radius: 9999px;
+		padding: 0.35rem 0.75rem 0.35rem 0.5rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--color-muted);
+		background: var(--color-paper);
+		cursor: pointer;
+		transition: color 0.2s, border-color 0.2s, background 0.2s;
+	}
+
+	.theme-switcher-btn:hover {
+		color: var(--color-accent-dark);
+		border-color: var(--color-accent);
+	}
+
+	.theme-switcher-btn.is-active {
+		color: white;
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+	}
+
+	.theme-swatch {
+		width: 1rem;
+		height: 1rem;
+		border-radius: 9999px;
+		border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+		flex-shrink: 0;
+	}
+
+	.theme-swatch-brand {
+		background: linear-gradient(135deg, #0090e8 50%, #00b894 50%);
+	}
+
+	.theme-swatch-kiwi {
+		background: linear-gradient(135deg, #7bc142 50%, #ffd23f 50%);
+	}
+
+	.theme-swatch-mist {
+		background: linear-gradient(135deg, #7ba3b8 50%, #52796f 50%);
+	}
+
+	.theme-swatch-alchemy {
+		background: linear-gradient(135deg, #7c3aed 50%, #f97316 50%);
+	}
+</style>

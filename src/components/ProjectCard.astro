@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import StatusBadge from './StatusBadge.astro';
+import ProjectMedia from './ProjectMedia.astro';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -8,19 +9,35 @@ interface Props {
 
 const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const detailHref = `${base}projects/${project.id}/`;
 ---
 
-<article class="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-	<a href={`${base}projects/${project.id}/`} class="flex h-full flex-col">
-		<div class="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-sky to-paper text-6xl">
-			<span aria-hidden="true">{project.data.icon}</span>
-		</div>
-		<div class="flex flex-1 flex-col gap-4 p-6">
-			<div class="flex items-start justify-between gap-3">
-				<h3 class="text-2xl">{project.data.title}</h3>
-				<StatusBadge status={project.data.status} />
-			</div>
-			<p class="text-muted">{project.data.hook}</p>
-		</div>
+<article class="project-card">
+	<a href={detailHref} class="block">
+		<ProjectMedia project={project} variant="card" />
 	</a>
+	<div class="flex flex-1 flex-col p-5">
+		<div class="flex items-start justify-between gap-3">
+			<h3 class="text-lg font-bold">
+				<a href={detailHref} class="hover:text-accent-dark">{project.data.title}</a>
+			</h3>
+			<StatusBadge status={project.data.status} />
+		</div>
+		<p class="mt-2 flex-1 text-sm text-muted">{project.data.hook}</p>
+		<div class="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+			<a href={detailHref} class="text-accent-dark hover:text-accent">Learn more →</a>
+			{
+				project.data.projectUrl && (
+					<a
+						href={project.data.projectUrl}
+						class="text-muted hover:text-accent-dark"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Visit ↗
+					</a>
+				)
+			}
+		</div>
+	</div>
 </article>

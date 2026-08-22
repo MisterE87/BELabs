@@ -1,0 +1,41 @@
+# Manual FTP deploy to IFastNet (premium account).
+# Builds Astro to dist/, then uploads to the belabs.nl folder.
+
+name: Manual workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies and build
+        env:
+          BASE_PATH: /
+        run: npm ci && npm run build
+
+      - name: Upload to FTP Server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_PREMIUM }}
+          username: ${{ secrets.FTP_USERNAME_PREMIUM }}
+          password: ${{ secrets.FTP_PASSWORD_PREMIUM }}
+          local-dir: ./dist/
+          server-dir: /belabs.nl/
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/.git/**
+            **/node_modules/**
+            .env.example
