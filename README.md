@@ -185,6 +185,15 @@ gallery:
 
 Drop gallery source images in `public/images/projects/{slug}/gallery/` (png, jpg, webp, or heic), then run `npm run assets:optimize`. The script outputs `gallery/{name}.webp` — portrait images are resized to max 720px wide; landscape images to max 1280px wide (aspect ratio preserved).
 
+**Showcase checklist** (keep this pattern for new projects):
+
+1. **Folder name = project slug** — e.g. `dnd-sounds`, not `DnDSounds` (paths are `public/images/projects/{slug}/`).
+2. **Primary image** — `screenshot.png` at the project root becomes `screenshot.webp` (project cards, hero bento, detail hero).
+3. **Detail gallery** — extra screens in `gallery/`, listed in frontmatter `gallery:` with `file`, `title`, `alt`, `caption`, and `orientation`.
+4. **When a numbered shot should be primary** — rename that file to `screenshot.png`; move the alternate screen into `gallery/`.
+5. **Frontmatter** — `showcase: true`, optional `facts`, and one gallery entry per extra screen (see `board-stats.md`, `inpaklijst.md`, `dnd-sounds.md`).
+6. **Optimize before commit** — `npm run assets:optimize` (also runs on `dev` / `build`).
+
 ## Farm Academy privacy
 
 Canonical policy: `/privacy/farm-academy/` (Dutch content migrated from [farm-academy-privacy](https://github.com/MisterE87/farm-academy-privacy)).

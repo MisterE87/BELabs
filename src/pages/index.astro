@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import FeatureGrid from '../components/FeatureGrid.astro';
 import AboutSection from '../components/AboutSection.astro';
 import ProjectShowcase from '../components/ProjectShowcase.astro';
 import BottomCta from '../components/BottomCta.astro';
@@ -10,7 +9,7 @@ import { site } from '../lib/site';
 
 const projects = await getCollection('projects');
 
-const heroFeaturedSlugs = ['aquarium', 'farm-academy', 'blue-chicken-board-games', 'board-stats'];
+const heroFeaturedSlugs = ['board-stats', 'farm-academy', 'inpaklijst', 'blue-chicken-board-games'];
 const featuredProjects = heroFeaturedSlugs
 	.map((slug) => projects.find((project) => project.id === slug))
 	.filter((project): project is NonNullable<typeof project> => project !== undefined);
@@ -18,7 +17,6 @@ const featuredProjects = heroFeaturedSlugs
 
 <BaseLayout title={`${site.name} | Hobby apps & side projects`} headerVariant="home">
 	<Hero description={site.description} featuredProjects={featuredProjects} />
-	<FeatureGrid />
 	<AboutSection />
 	<ProjectShowcase projects={projects} />
 	<BottomCta />
