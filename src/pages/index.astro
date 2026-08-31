@@ -9,7 +9,7 @@ import { site } from '../lib/site';
 
 const projects = await getCollection('projects');
 
-const heroFeaturedSlugs = ['board-stats', 'farm-academy', 'inpaklijst', 'blue-chicken-board-games'];
+const heroFeaturedSlugs = ['board-stats', 'farm-academy', 'dm-tools', 'blue-chicken-board-games'];
 const featuredProjects = heroFeaturedSlugs
 	.map((slug) => projects.find((project) => project.id === slug))
 	.filter((project): project is NonNullable<typeof project> => project !== undefined);

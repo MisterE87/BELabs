@@ -187,11 +187,11 @@ Drop gallery source images in `public/images/projects/{slug}/gallery/` (png, jpg
 
 **Showcase checklist** (keep this pattern for new projects):
 
-1. **Folder name = project slug** — e.g. `dnd-sounds`, not `DnDSounds` (paths are `public/images/projects/{slug}/`).
+1. **Folder name = project slug** — e.g. `dm-tools`, not `DmTools` (paths are `public/images/projects/{slug}/`).
 2. **Primary image** — `screenshot.png` at the project root becomes `screenshot.webp` (project cards, hero bento, detail hero).
 3. **Detail gallery** — extra screens in `gallery/`, listed in frontmatter `gallery:` with `file`, `title`, `alt`, `caption`, and `orientation`.
 4. **When a numbered shot should be primary** — rename that file to `screenshot.png`; move the alternate screen into `gallery/`.
-5. **Frontmatter** — `showcase: true`, optional `facts`, and one gallery entry per extra screen (see `board-stats.md`, `inpaklijst.md`, `dnd-sounds.md`).
+5. **Frontmatter** — `showcase: true`, optional `facts`, and one gallery entry per extra screen (see `board-stats.md`, `inpaklijst.md`, `dm-tools.md`).
 6. **Optimize before commit** — `npm run assets:optimize` (also runs on `dev` / `build`).
 
 ## Farm Academy privacy
