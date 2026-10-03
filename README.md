@@ -43,6 +43,7 @@ The main site is an **Astro-style one-pager** with anchor sections:
 |-------|---------|
 | `/projects/[slug]/` | Project detail page |
 | `/privacy/farm-academy/` | Farm Academy privacy policy (NL) |
+| `/privacy/animal-flow/` | Animal Flow privacy policy (NL) |
 
 Legacy routes `/about/`, `/contact/`, and `/projects/` redirect to the matching homepage anchors.
 
@@ -51,7 +52,7 @@ Legacy routes `/about/`, `/contact/`, and `/projects/` redirect to the matching 
 | Path | Purpose |
 |------|---------|
 | `src/content/projects/` | One Markdown file per hobby project |
-| `src/content/legal/` | Legal pages (Farm Academy privacy, NL) |
+| `src/content/legal/` | Legal pages (Farm Academy / Animal Flow privacy, NL) |
 | `src/pages/` | Home one-pager, project detail, privacy |
 | `src/components/` | Astro-style sections, header, footer, project cards |
 | `src/styles/theme.css` | Theme entry + imports |
@@ -194,11 +195,14 @@ Drop gallery source images in `public/images/projects/{slug}/gallery/` (png, jpg
 5. **Frontmatter** — `showcase: true`, optional `facts`, and one gallery entry per extra screen (see `board-stats.md`, `inpaklijst.md`, `dm-tools.md`).
 6. **Optimize before commit** — `npm run assets:optimize` (also runs on `dev` / `build`).
 
-## Farm Academy privacy
+## Privacy policies
 
-Canonical policy: `/privacy/farm-academy/` (Dutch content migrated from [farm-academy-privacy](https://github.com/MisterE87/farm-academy-privacy)).
+| App | Canonical URL | Edit |
+|-----|---------------|------|
+| Farm Academy | `/privacy/farm-academy/` | `src/content/legal/farm-academy-privacy.md` |
+| Animal Flow | `/privacy/animal-flow/` | `src/content/legal/animal-flow-privacy.md` |
 
-Edit `src/content/legal/farm-academy-privacy.md` to update legal text.
+Farm Academy content was migrated from [farm-academy-privacy](https://github.com/MisterE87/farm-academy-privacy). Play Console should use the `https://www.belabs.nl/...` URLs.
 
 ## Deploy
 
@@ -222,7 +226,7 @@ These are shared with other IFastNet-hosted projects in the same GitHub account.
 
 ## Contact email
 
-General contact and Farm Academy privacy both use `erwin@belabs.nl` (`site.contactEmail` in `src/lib/site.ts` and legal frontmatter).
+General contact and app privacy pages use `erwin@belabs.nl` (`site.contactEmail` in `src/lib/site.ts` and legal frontmatter).
 
 ## License
 
