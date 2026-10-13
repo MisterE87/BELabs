@@ -1,4 +1,4 @@
-export const projectStatuses = ['Live', 'In development', 'Friends & family'] as const;
+export const projectStatuses = ['Live', 'In development', 'Friends & family', 'Archived'] as const;
 
 export type ProjectStatus = (typeof projectStatuses)[number];
 
@@ -21,6 +21,11 @@ export const statusSections: {
 		status: 'Friends & family',
 		title: 'Friends & family',
 		description: 'Small tools built for people close to home — not public products.',
+	},
+	{
+		status: 'Archived',
+		title: 'Archived',
+		description: 'Past builds kept on record after the event or when the live site went offline.',
 	},
 ];
 

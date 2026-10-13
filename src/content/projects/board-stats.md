@@ -10,13 +10,26 @@ showcase: true
 heroOrientation: landscape
 facts:
   - label: Platform
-    value: Web (PhP)
+    value: Web (PHP 8.2 + MySQL)
   - label: Mobile friendly
     value: Install as a PWA
   - label: Site
     value: boardgamestats.nl
   - label: Built for
     value: Board game groups
+highlights:
+  - title: Expansions done right
+    description: Log expansions together with their base game; stats roll up correctly.
+    icon: "📦"
+  - title: Your language
+    description: Search and show game names in your own language, or set a custom name.
+    icon: "🌐"
+  - title: Mobile-first UI
+    description: Cards, bottom sheets, dark/light mode, and “What’s new” notifications in the installed app.
+    icon: "📱"
+  - title: Spiel companion
+    description: A temporary companion for Spiel Essen 2025 — quick lookups while wandering the halls.
+    icon: "🎪"
 gallery:
   - file: Dashboard.png
     title: Dashboard
@@ -38,7 +51,7 @@ gallery:
       - Sessions2.png
     title: Session logging
     alt: Session overview and new session registration
-    caption: Have an overview of all sessions you regisered, with the possibility to edit. Tag friends on new sessions so plays show up in their account too.
+    caption: Have an overview of all sessions you registered, with the possibility to edit. Tag friends on new sessions so plays show up in their account too.
     orientation: landscape
   - file: FriendInvite.png
     title: Easily invite friends to join

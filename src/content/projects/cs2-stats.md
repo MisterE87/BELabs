@@ -5,6 +5,12 @@ hook: "Tracking Counter-Strike 2 Wingman stats"
 featured: true
 icon: "🎯"
 showcase: true
+heroOrientation: landscape
+facts:
+  - label: Platform
+    value: Web (PHP + MySQL), installable PWA
+  - label: Built for
+    value: Wingman duo stats
 gallery:
   - file: parser.png
     title: Match parser
@@ -17,3 +23,5 @@ gallery:
     caption: Easily track how you and your selected Wingman partner perform on each map.
     orientation: landscape
 ---
+
+Paste a Steam match summary, confirm the parsed stats, and see how you and your Wingman partner perform per map. Redesigned in July for mobile, with a PWA that keeps you signed in.

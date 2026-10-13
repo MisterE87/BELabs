@@ -3,7 +3,8 @@ title: "DM tools"
 status: "Friends & family"
 hook: "Campaign, encounter, and soundboard tools for tabletop RPG sessions at home."
 featured: true
-icon: "🎲"
+icon: "🐉"
+projectUrl: "https://dmtools.oo.gd"
 showcase: true
 heroOrientation: landscape
 facts:
@@ -11,8 +12,21 @@ facts:
     value: Web
   - label: Built for
     value: Family D&D nights
-  - label: Status
-    value: Friends & family tool
+  - label: Site
+    value: dmtools.oo.gd (login for our table)
+highlights:
+  - title: Rules reference
+    description: Quick lookup for spells, weapons, armor, conditions and general rules mid-session.
+    icon: "📖"
+  - title: Character invites by QR
+    description: Invite players to their character with a QR code.
+    icon: "📲"
+  - title: Custom creatures
+    description: Tweak creature stats, weapons and spell slots for your own encounters.
+    icon: "🦎"
+  - title: Combat tracker
+    description: Initiative order, HP, conditions and a round counter.
+    icon: "⚔️"
 gallery:
   - file: Campaign.png
     title: Campaign management
@@ -32,10 +46,10 @@ gallery:
   - file: Soundboard.png
     title: Session soundboard
     alt: Soundboard with character and situation filters for tabletop sessions
-    caption: With a soundboard for the player characters to level up the gameplay slightly and make up for some bad plays of for instance Brokk Trolot.
+    caption: With a soundboard for the player characters to level up the gameplay slightly and make up for some bad plays by, for instance, Brokk Trolot.
     orientation: landscape
 ---
 
 A set of DM tools for Dungeons & Dragons and other tabletop sessions — campaign tracking, encounter prep, creature lookup via open5e, and a soundboard for family game nights.
 
-Built for our own table, not published as a public product.
+Built for our own table; the live site is login-protected for the family group.

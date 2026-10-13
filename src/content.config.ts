@@ -30,7 +30,7 @@ const projects = defineCollection({
 	loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
 		title: z.string(),
-		status: z.enum(['Live', 'In development', 'Friends & family']),
+		status: z.enum(['Live', 'In development', 'Friends & family', 'Archived']),
 		hook: z.string(),
 		featured: z.boolean().default(true),
 		icon: z.string().default('🧪'),

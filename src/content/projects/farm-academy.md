@@ -4,13 +4,14 @@ status: "In development"
 hook: "An educational farm game for kids — built with Benjamin in mind."
 featured: true
 icon: "🌾"
-projectUrl: "https://play.google.com/store/apps/details?id=nl.farmacademy.game"
 privacyUrl: "/privacy/farm-academy/"
 showcase: true
 heroOrientation: portrait
 facts:
   - label: Platform
     value: Android
+  - label: Engine
+    value: Unity (C#)
   - label: Audience
     value: Kids & families
   - label: Progress
