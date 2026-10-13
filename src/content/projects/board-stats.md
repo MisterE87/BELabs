@@ -51,30 +51,30 @@ gallery:
     orientation: landscape
   - file: Dashboard.png
     title: Dashboard
-    alt: Boardgamestats dashboard with play statistics
-    caption: Play rankings and charts on the dashboard. Screenshot predates the September mobile polish — re-capture when logged in for the latest cards and colours.
+    alt: Boardgamestats dashboard with play statistics in Cartographer theme
+    caption: Play rankings and charts on the dashboard — navy sidebar, parchment surfaces, and the light/dark appearance controls.
     orientation: landscape
   - file: Collection.png
     title: Your boardgame collection
-    alt: Board game collection overview
-    caption: Collection view with the refreshed surfaces and typography.
+    alt: Board game collection overview in Cartographer theme
+    caption: Collection view with the refreshed card surfaces, typography, and icon actions.
     orientation: landscape
   - file: BGG_API.png
     title: BoardGameGeek integration
-    alt: BoardGameGeek API integration for adding games
-    caption: Search any game on BGG.
+    alt: BoardGameGeek API search modal for adding games
+    caption: Search any game on BGG and import it into your catalog.
     orientation: landscape
   - files:
       - Sessions.png
       - Sessions2.png
     title: Session logging
     alt: Session overview and new session registration
-    caption: Have an overview of all sessions you registered, with the possibility to edit. Tag friends on new sessions so plays show up in their account too.
+    caption: Overview of registered sessions, with edit and friend tagging when logging a new play.
     orientation: landscape
   - file: FriendInvite.png
     title: Easily invite friends to join
-    alt: Generate a QR and a link with which you can easily ask friends to register and join.
-    caption: Generate a QR and a link with which you can easily ask friends to register and join.
+    alt: Friend invite QR code and share link modal
+    caption: Generate a QR and a link so friends can register and connect with you.
     orientation: landscape
 ---
 

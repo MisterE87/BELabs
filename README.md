@@ -111,18 +111,20 @@ Set `captureUrl` in project frontmatter when the homepage is not the best previe
 CAPTURE_AUTH_board_stats=username:password
 ```
 
-For Boardgamestats, you can capture the local dashboard against real data:
+For Boardgamestats, capture the **full gallery** (public light/dark + logged-in pages) against local data:
 
 ```bash
 # terminal 1 — from boardgamer repo
 PHP_CLI_SERVER_WORKERS=4 php -S 127.0.0.1:3000 -t .
 
-# terminal 2 — BELabs repo
+# terminal 2 — BELabs repo (.env also works; see .env.example)
 CAPTURE_AUTH_board_stats=user:pass \
-CAPTURE_URL_board_stats=http://127.0.0.1:3000/dashboard.php \
-CAPTURE_LOGIN_URL_board_stats=http://127.0.0.1:3000/index.php \
-npm run assets:capture
+CAPTURE_BASE_board_stats=http://127.0.0.1:3000 \
+npm run assets:capture:board-stats
+npm run assets:optimize
 ```
+
+That writes `AppearanceLight`/`AppearanceDark`, `Dashboard`, `Collection`, `Sessions`, `Sessions2`, `BGG_API`, and `FriendInvite` under `public/images/projects/board-stats/`.
 
 Projects without a `projectUrl` get a generated gradient placeholder screenshot (emoji + title) when you run `npm run assets:capture` — unless you already added manual files.
 

@@ -12,6 +12,7 @@
     "build": "astro build",
     "preview": "astro preview --port 4323",
     "assets:capture": "node scripts/capture-project-assets.mjs",
+    "assets:capture:board-stats": "node scripts/capture-board-stats-gallery.mjs",
     "assets:optimize": "node scripts/optimize-project-assets.mjs",
     "favicon:generate": "node scripts/generate-favicon.mjs",
     "astro": "astro"
