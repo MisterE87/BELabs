@@ -209,8 +209,15 @@ Farm Academy content was migrated from [farm-academy-privacy](https://github.com
 ## Deploy
 
 1. Push changes to `main` on GitHub.
-2. GitHub → **Actions** → **Manual workflow** → **Run workflow**.
+2. GitHub → **Actions** → **Manual workflow** → **Run workflow** (or `gh workflow run "Manual workflow"`).
 3. The workflow runs `npm ci && npm run build`, then uploads `./dist/` to `/belabs.nl/` on IFastNet.
+
+Project icons/screenshots live under `public/` with stable filenames. Cloudflare was caching those for ~30 days, so a successful FTP upload could still leave the old icon visible. Mitigations:
+
+- HTML references assets with a `?v=<mtime>` query (see `src/lib/projectAssets.ts`) so new deploys request a fresh cache key.
+- `public/.htaccess` sets image `Cache-Control` to 1 day (`max-age=86400`) instead of a month-long edge TTL.
+
+To flush immediately without waiting, purge the URL (or “Purge Everything”) in the Cloudflare dashboard for `belabs.nl`.
 
 ### Before first deploy
 

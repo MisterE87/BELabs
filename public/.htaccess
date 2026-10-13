@@ -1,0 +1,16 @@
+# Origin cache hints for Cloudflare / browsers.
+# HTML stays short-lived; hashed _astro/ assets can stay long; project images revalidate daily
+# so icon/screenshot updates are not stuck behind a 30-day edge TTL after FTP deploys.
+
+<IfModule mod_headers.c>
+	# Default for HTML / PHP-less pages
+	Header set Cache-Control "public, max-age=500, proxy-revalidate"
+
+	<FilesMatch "\.(?:js|css|woff2?)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+
+	<FilesMatch "\.(?:png|jpe?g|webp|gif|svg|ico)$">
+		Header set Cache-Control "public, max-age=86400, must-revalidate"
+	</FilesMatch>
+</IfModule>
