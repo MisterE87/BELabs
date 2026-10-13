@@ -39,6 +39,7 @@ const projects = defineCollection({
 		privacyUrl: z.string().startsWith('/').optional(),
 		showcase: z.boolean().default(false),
 		heroOrientation: z.enum(['portrait', 'landscape']).optional(),
+		projectTheme: z.enum(['cartographer']).optional(),
 		facts: z.array(projectFact).optional(),
 		highlights: z.array(projectHighlight).optional(),
 		gallery: z.array(projectGalleryItem).optional(),

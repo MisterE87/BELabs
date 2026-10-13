@@ -2,6 +2,7 @@
  * B&E Labs — theme tokens (brand palette)
  */
 @import './themes/belabs-brand.css';
+@import './themes/project-cartographer.css';
 
 @theme inline {
 	--font-display: "Nunito", ui-sans-serif, system-ui, sans-serif;

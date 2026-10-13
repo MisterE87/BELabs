@@ -14,12 +14,13 @@ interface Props {
 
 const { project, hasBody = true } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const themeClass = project.data.projectTheme ? `project-theme-${project.data.projectTheme}` : '';
 const facts = project.data.facts ?? [];
 const highlights = project.data.highlights ?? [];
 const heroPortrait = project.data.heroOrientation === 'portrait';
 ---
 
-<article>
+<article class:list={[themeClass]}>
 	<section class="hero-dark border-b border-white/10">
 		<div class="page-shell py-16">
 			<div class="reveal grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
