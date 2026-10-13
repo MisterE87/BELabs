@@ -1,16 +1,14 @@
 ---
 title: "Bachelor Party"
-status: "Friends & family"
+status: "Archived"
 hook: "Wedding info site for a bachelor party weekend — now happily archived."
 featured: false
 icon: "💍"
 showcase: true
 heroOrientation: landscape
 facts:
-  - label: Status
-    value: Archived after the wedding
   - label: Built for
-    value: Bachelor party guests
+    value: Nejat's bachelor party, Dec 2025
   - label: Language
     value: Dutch
 ---

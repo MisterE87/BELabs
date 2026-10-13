@@ -1,6 +1,6 @@
 ---
 interface Props {
-	status: 'Live' | 'In development' | 'Friends & family';
+	status: 'Live' | 'In development' | 'Friends & family' | 'Archived';
 	tone?: 'default' | 'on-dark';
 }
 
@@ -10,12 +10,14 @@ const defaultStyles: Record<Props['status'], string> = {
 	Live: 'bg-accent/25 text-accent-dark border border-accent/30',
 	'In development': 'bg-amber/30 text-ink border border-amber/40',
 	'Friends & family': 'bg-mint/40 text-ink border border-mint/50',
+	Archived: 'bg-line/80 text-muted border border-line',
 };
 
 const onDarkStyles: Record<Props['status'], string> = {
 	Live: 'bg-mint/35 text-white border border-mint/50',
 	'In development': 'bg-amber/35 text-white border border-amber/50',
 	'Friends & family': 'bg-sky/35 text-white border border-sky/50',
+	Archived: 'bg-white/15 text-white/80 border border-white/25',
 };
 
 const styles = tone === 'on-dark' ? onDarkStyles : defaultStyles;
