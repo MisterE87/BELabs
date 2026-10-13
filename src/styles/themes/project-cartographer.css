@@ -1,0 +1,28 @@
+/* Boardgamestats “Cartographer” palette — matches live theme.css tokens */
+.project-theme-cartographer .hero-dark {
+	--theme-accent: #3d5a80;
+	--theme-accent-dark: #243447;
+	--theme-mint: #c9a227;
+	--theme-amber: #d4b04a;
+	--theme-ink: #0f1724;
+	background-image:
+		radial-gradient(ellipse 75% 55% at 85% 0%, color-mix(in srgb, #3d5a80 50%, transparent), transparent 55%),
+		radial-gradient(ellipse 55% 45% at 8% 100%, color-mix(in srgb, #c9a227 28%, transparent), transparent 50%),
+		radial-gradient(circle at 40% 35%, color-mix(in srgb, #5b8fd4 18%, transparent), transparent 65%);
+}
+
+.project-theme-cartographer .btn-hero-primary {
+	background-color: #3d5a80;
+}
+
+.project-theme-cartographer .btn-hero-primary:hover {
+	background-color: #314a6a;
+}
+
+.project-theme-cartographer .feature-card {
+	border-color: color-mix(in srgb, #3d5a80 22%, var(--theme-line));
+}
+
+.project-theme-cartographer .subsection-accent {
+	background: linear-gradient(to bottom, #3d5a80, #c9a227);
+}
