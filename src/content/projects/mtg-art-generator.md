@@ -30,21 +30,21 @@ gallery:
       - TokenSteampunk.png
       - TokenLotr.png
     title: Theme variants
-    alt: Steampunk and fantasy-themed fan token card layouts without portrait art
-    caption: The same token concept rendered across themes — steampunk brass and classic fantasy — ready for the print sheet.
+    alt: Steampunk Construct token and Middle-earth Bear token, full-art fan cards without personal portraits
+    caption: Creature tokens across themes — brass automata in Steampunk, a Shire-path bear in Middle-earth — no friend portraits on the public site.
     orientation: portrait
   - file: TokenSouthPark.png
     title: Pop-culture skins
-    alt: Cartoon-styled fan token card layout with abstract character silhouette
+    alt: South Park–styled Dinosaur token card with cartoon alpine art
     caption: Lighter themes get their own palette and framing while keeping the same rules text and print dimensions.
     orientation: portrait
   - file: PrintSheet.png
     title: Print sheet
-    alt: Grid of fan token cards arranged for MPC printing with bleed margins
-    caption: Tokens export as a bleed-aware sheet at 300 dpi for MakePlayingCards or home printing.
+    alt: Grid of six face-free fan tokens across Steampunk, Middle-earth, and South Park themes
+    caption: A sample sheet of creature tokens (construct, bear, dinosaur, beast, bird, cat) ready for print layout.
     orientation: landscape
 ---
 
-A hobby pipeline that turns photos and hobbies of friends into Magic: The Gathering–style fan tokens. Themes, rules text and flavor text are composed into print-ready full-art cards.
+A hobby pipeline that turns photos and hobbies of friends into Magic: The Gathering–style fan tokens. Themes, rules text and flavor text are composed into print-ready full-art cards. Public gallery here uses creature-only renders — no identifiable faces.
 
 Not affiliated with Wizards of the Coast. Fan content for our own games.
